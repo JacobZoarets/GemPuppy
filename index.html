@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puppy Gemologist | Diamond Grading Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+
+        .carousel-inner {
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-inner {
+                height: 400px;
+            }
+        }
+    </style>
+    <style>
+        .gallery {
+            display: flex;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+
+            .gallery img {
+                width: 150px;
+                height: 150px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+                border: 2px solid transparent;
+                cursor: pointer;
+            }
+
+                .gallery img.selected {
+                    border-color: blue;
+                }
+
+            .gallery select {
+                margin-left: 10px;
+            }
+
+            .gallery .label {
+                font-size: 20px;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+
+            .gallery .description {
+                font-size: 14px;
+                margin-right: 10px;
+            }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        form {
+            position: relative;
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .logo {
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ccc;
+        }
+
+        .color-desc {
+            font-size: 12px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .form-check-label {
+            font-size: 12px;
+        }
+
+        .form-check-input {
+            position: absolute;
+            margin-top: 0.3rem;
+            margin-left: 2.25rem;
+        }
+        .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+  z-index: 9999; /* Ensure the overlay is on top of other elements */
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional styling for report sections */
+.report-section {
+  margin-bottom: 20px;
+}
+
+    </style>
+    <script>
+       
+
+        function submitForm() {
+            // Extracting carat weight from input box
+            var caratWeight = document.getElementById('carat-weight').value;
+            var diamond_id = document.getElementById('diamond-id').value;
+            // Extracting selections from select boxes
+            var shapeCuttingStyle = document.getElementById('shape-cutting-style').value;
+            var colorGradeSelection = document.getElementById('colorGradeSelection').value;
+            var clarityGradeSelection = document.getElementById('clarityGradeSelection').value;
+            var fluorescenceSelect = document.getElementById('fluorescenceSelect').value;            
+            var finalPolishGradeSelection = document.getElementById('finalPolishGradeSelection').value;
+            var finalSymmetryGradeSelection = document.getElementById('finalSymmetryGradeSelection').value;
+            var finalCutGradeSelection = document.getElementById('finalCutGradeSelection').value;
+
+            var rappaportDiamondPrice = document.getElementById('rappaportDiamondPrice').value;
+          
+            // Creating the grading report
+            var report = `
+                <div class="overlay">
+                <div class="overlay-content">
+                    
+                    <h2 class="report-title">Grading Report</h2>
+                    <div class="report-section">
+                    <h3 class="section-title">`+diamond_id+`</h3>
+                    <p class="section-description">Diamond ID</p>
+                    </div>
+                    <div class="report-section">
+                    <h3 class="section-title">`+caratWeight+`</h3>
+                    <p class="section-description">Carat Weight (CT)</p>
+                    </div>
+                    <div class="report-section">
+                    <h3 class="section-title">`+shapeCuttingStyle+`</h3>
+                    <p class="section-description">Shape & Cutting</p>
+                    </div>
+                    <div class="report-section">
+                    <h3 class="section-title">`+colorGradeSelection+`</h3>
+                    <p class="section-description">Color Grade</p>
+                    </div>
+                    <div class="report-section">
+                    <h3 class="section-title">`+clarityGradeSelection+`</h3>
+                    <p class="section-description">Clarity Grade</p>
+                    </div>
+
+                    <div class="report-section">
+                    <h3 class="section-title">`+fluorescenceSelect+`</h3>
+                    <p class="section-description">Fluorescence</p>
+                    </div>
+                    
+                    <div class="report-section">
+                    <h3 class="section-title">`+finalPolishGradeSelection+`</h3>
+                    <p class="section-description">Polish Grade</p>
+                    </div>
+
+                    <div class="report-section">
+                    <h3 class="section-title">`+finalSymmetryGradeSelection+`</h3>
+                    <p class="section-description">Symmetry Grade</p>
+                    </div>
+
+                    <div class="report-section">
+                    <h3 class="section-title">`+finalCutGradeSelection+`</h3>
+                    <p class="section-description">Cut Grade</p>
+                    </div>
+
+                    <div class="report-section">
+                    <h3 class="section-title">$`+rappaportDiamondPrice+`</h3>
+                    <p class="section-description">Rappaport Price</p>
+                    </div>
+
+
+                    <button class="close-button" onclick="closeOverlay()">Close</button>
+                    <!-- Add more report sections as needed -->
+                </div>
+                </div>
+            `;
+
+            // Creating the overlay container
+            var overlay = document.createElement('div');
+            overlay.innerHTML = report;
+            document.body.appendChild(overlay);
+                    }
+                    function closeOverlay() {
+            var overlay = document.querySelector('.overlay');
+            overlay.remove();
+            }
+    </script>
+</head>
+
+<body>
+    <form id="diamond-form">
+        <img src="https://i.ibb.co/b3CsQhJ/DALL-E-2023-05-04-23-38-52-A-modern-art-of-puppy-gemologist-examining-a-diamond-in-Ramat-Gan-city-in.png" alt="Puppy Gemologist Logo" class="logo">
+        <br>
+        <h2>Diamond Grading Form</h2>
+        <div style="height:10px"></div>
+        <label for="Diamond ID">Diamond ID</label>
+        <input type="text" id="diamond-id" value="">
+        <hr>
+        <label for="Carat Weight (CT)">Carat Weight (CT)</label>
+        <input type="number" step="0.01" id="carat-weight" value="0.0">
+        <hr>
+
+        <label for="shape-cutting-style">Shape and Cutting Style</label>
+        <div class="gallery">
+
+            <img src="images\shape_and_style\round.png">
+            <img src="images\shape_and_style\rectangle.png">
+            <img src="images\shape_and_style\princess.png">
+        </div>
+        <select id="shape-cutting-style">
+            <option value="None">None</option>
+            <option value="Round Brilliant">Round Brilliant</option>
+            <option value="Princess Cut">Princess Cut</option>
+            <option value="Emerald Cut">Emerald Cut</option>
+            <option value="Asscher Cut">Asscher Cut</option>
+            <option value="Radiant Cut">Radiant Cut</option>
+            <option value="Cushion Cut">Cushion Cut</option>
+            <option value="Pear Shaped">Pear Shaped</option>
+            <option value="Oval Shaped">Oval Shaped</option>
+            <option value="Heart Shaped">Heart Shaped</option>
+            <option value="Marquise Shaped">Marquise Shaped</option>
+        </select>
+        <hr>
+        <label>Color Grading</label>
+        <div class="gallery">
+
+            <img src="images\colors\def.png">
+            <img src="images\colors\ghij.png">
+            <img src="images\colors\klm.png">
+            <img src="images\colors\nopqr.png">
+            <img src="images\colors\stuvwxyz.png">
+
+        </div>
+        <select id="colorGradeSelection">
+            <option value="None">None</option>
+            <option value="D">D: Colorless</option>
+            <option value="E">E: Colorless</option>
+            <option value="F">F: Colorless</option>
+            <option value="G">G: Near Colorless</option>
+            <option value="H">H: Near Colorless</option>
+            <option value="I">I: Near Colorless</option>
+            <option value="J">J: Near Colorless</option>
+            <option value="K">K: Faint Yellow</option>
+            <option value="L">L: Faint Yellow</option>
+            <option value="M">M: Faint Yellow</option>
+            <option value="N">N: Very Light Yellow</option>
+            <option value="O">O: Very Light Yellow</option>
+            <option value="P">P: Very Light Yellow</option>
+            <option value="Q">Q: Very Light Yellow</option>
+            <option value="R">R: Very Light Yellow</option>
+            <option value="S">S: Light Yellow</option>
+            <option value="T">T: Light Yellow</option>
+            <option value="U">U: Light Yellow</option>
+            <option value="V">V: Light Yellow</option>
+            <option value="W">W: Light Yellow</option>
+            <option value="X">X: Light Yellow</option>
+            <option value="Y">Y: Light Yellow</option>
+            <option value="Z">Z: Light Yellow</option>
+        </select>
+
+        <hr>
+
+        <label>Clarity Grading</label>
+        <div class="gallery">
+
+            <img src="images\clarity_scale\fl.png">
+            <img src="images\clarity_scale\if.png">
+            <img src="images\clarity_scale\vvs1.png">
+            <img src="images\clarity_scale\vvs2.png">
+            <img src="images\clarity_scale\vs1.png">
+            <img src="images\clarity_scale\vs2.png">
+            <img src="images\clarity_scale\si1.png">
+            <img src="images\clarity_scale\si2.png">
+            <img src="images\clarity_scale\i1.png">
+            <img src="images\clarity_scale\i2.png">
+        </div>
+
+
+
+        <select id="clarityGradeSelection">
+            <option value="None">None</option>
+            <option value="FL">FL (Flawless)</option>
+            <option value="IF">IF (Internally Flawless)</option>
+            <option value="VVS1">VVS1 (Very, Very Slightly Included 1)</option>
+            <option value="VVS2">VVS2 (Very, Very Slightly Included 2)</option>
+            <option value="VS1">VS1 (Very Slightly Included 1)</option>
+            <option value="VS2">VS2 (Very Slightly Included 2)</option>
+            <option value="SI1">SI1 (Slightly Included 1)</option>
+            <option value="SI2">SI2 (Slightly Included 2)</option>
+            <option value="I1">I1 (Included 1)</option>
+            <option value="I2">I2 (Included 2)</option>
+            <option value="I3">I3 (Included 3)</option>
+        </select>
+
+        <div>
+
+            <label for="fluorescence">Fluorescence</label>
+            <div class="gallery">
+
+                <img src="images\fluresence\none.png">
+                <img src="images\fluresence\faint.png">
+                <img src="images\fluresence\medium.png">
+                <img src="images\fluresence\strong.png">
+                <img src="images\fluresence\very_strong.png">
+            </div>
+            <select id="fluorescenceSelect">
+                <option value="None">None</option>
+                <option value="Faint">Faint</option>
+                <option value="Medium">Medium</option>
+                <option value="Strong">Strong</option>
+                <option value="Very Strong">Very Strong</option>
+            </select>
+
+
+        </div>
+
+        <hr>
+
+
+
+        <label>Cut Grading</label>
+
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <label for="measurements-min">Lowest Diameter</label>
+                <input type="number" step="0.01" id="measurements-min" value="0.0">
+            </div>
+            <div>
+                <label for="measurements-max">Highest Diameter</label>
+                <input type="number" step="0.01" id="measurements-max" value="0.0">
+            </div>
+
+            <div>
+                <label for="measurements-height">Diamond Height</label>
+                <input type="number" step="0.01" id="measurements-height" value="0.0">
+            </div>
+            <div>
+
+                <button onclick="CalculateDepth()" class="btn btn-secondary" type="button">Calculate(%)</button>
+                <input readonly type="number" id="depthPercentage" style="margin-top: 13px;">
+                <script>
+                    function CalculateDepth() {
+                        var minDiameter = parseFloat(document.getElementById('measurements-min').value);
+                        var maxDiameter = parseFloat(document.getElementById('measurements-max').value);
+                        var height = parseFloat(document.getElementById('measurements-height').value);
+
+                        if (minDiameter <= 0 || maxDiameter <= 0 || height <= 0) {
+                            // Invalid input, handle the error or show an error message
+                            return;
+                        }
+
+                        var averageDiameter = (minDiameter + maxDiameter) / 2;
+                        var depthPercentage = (height / averageDiameter) * 100;
+                        document.getElementById('depthPercentage').value = depthPercentage.toFixed(2);
+                    }
+
+                </script>
+            </div>
+        </div>
+
+
+
+        <div class="gallery">
+            <img src="images\total_depth\too_shallow.png">
+            <img src="images\total_depth\ideal.png">
+            <img src="images\total_depth\too_deep.png">
+        </div>
+        <select name="depthPercentageSelect">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent (between 57.5 - 63)</option>
+            <option value="V.Good">V.Good (smaller then 57.5 || bigger then 63</option>
+            <option value="Good">Good (smaller then 56 || bigger then 64.5</option>
+            <option value="Fair">Fair (smaller then 53 || bigger then 66.5</option>
+            <option value="Poor">Poor (smaller then 51 || bigger then 70.9</option>
+        </select>
+
+
+        <label for="tableSize">Table Size(%):</label>
+        <div class="gallery">
+            <img src="images\table_size\54.png">
+            <img src="images\table_size\60.png">
+            <img src="images\table_size\65.png">
+            <img src="images\table_size\69.png">
+            <img src="images\table_size\72.png">
+        </div>
+        <select name="tableSizeSelect">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent (between 52 - 62)</option>
+            <option value="V.Good">V.Good (smaller then 52 || bigger then 62</option>
+            <option value="Good">Good (smaller then 50 || bigger then 66</option>
+            <option value="Fair">Fair (smaller then 47 || bigger then 69</option>
+            <option value="Poor">Poor (smaller then 44 || bigger then 72</option>
+        </select>
+
+
+
+        <label for="pavilionDepth">Pavilion Depth(%):</label>
+        <div class="gallery">
+            <img src="images\pavilion_depth\42.png">
+            <img src="images\pavilion_depth\43.png">
+            <img src="images\pavilion_depth\44.5.png">
+            <img src="images\pavilion_depth\48.png">
+        </div>
+        <select id="pavilionDepthSelect">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent (between 42.5 - 44.5)</option>
+            <option value="V.Good">V.Good (smaller then 41.5 - 42.0 || bigger then 45.0 - 45.5)</option>
+            <option value="Good">Good (smaller then 40.0 - 41.0 || bigger then 46.0 - 46.5)</option>
+            <option value="Fair">Fair (smaller then 38.0 - 39.5 || bigger then 47.0 - 48.0)</option>
+            <option value="Poor">Poor (smaller then 38.0 || bigger then 48</option>
+        </select>
+
+        <label for="culetSize">Culet Size:</label>
+        <div class="gallery">
+            <img src="images\culet_zise\none.png">
+            <img src="images\culet_zise\very_small.png">
+            <img src="images\culet_zise\small.png">
+            <img src="images\culet_zise\medium.png">
+
+            <img src="images\culet_zise\slightly_large.png">
+            <img src="images\culet_zise\large.png">
+            <img src="images\culet_zise\very_largee.png">
+            <img src="images\culet_zise\extremly_large.png">
+
+        </div>
+        <select id="culetSizeSelect">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent (None/V.small/Small)</option>
+            <option value="V.Good">V.Good (medium)</option>
+            <option value="Good">Good (slightly large)</option>
+            <option value="Fair">Fair (large || very large)</option>
+            <option value="Poor">Poor (extremly large)</option>
+        </select>
+
+        <label for="crownAngle">Crown Angle(degree):</label>
+        <div class="gallery">
+            <img src="images\crown_angle\25.png">
+            <img src="images\crown_angle\28.png">
+            <img src="images\crown_angle\31.png">
+            <img src="images\crown_angle\34.png">
+            <img src="images\crown_angle\37.png">
+            <img src="images\crown_angle\40.png">
+        </div>
+        <select id="crownAngleSelect">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent (between 31.5 - 36.5)</option>
+            <option value="V.Good">V.Good (smaller then 31.5 || bigger then 36.5</option>
+            <option value="Good">Good (smaller then 26.5 || bigger then 38.5</option>
+            <option value="Fair">Fair (smaller then 22 || bigger then 40</option>
+            <option value="Poor">Poor (smaller then 20 || bigger then 41.5</option>
+        </select>
+
+        <label for="girdleThickness">Girdle Thickness:</label>
+        <div class="gallery">
+            <img src="images\gridle_thickness\extremly_thin.png">
+            <img src="images\gridle_thickness\very_thin.png">
+            <img src="images\gridle_thickness\thin.png">
+            <img src="images\gridle_thickness\medium.png">
+            <img src="images\gridle_thickness\slightly_thick.png">
+            <img src="images\gridle_thickness\thick.png">
+            <img src="images\gridle_thickness\very_thick.png">
+            <img src="images\gridle_thickness\extremly_thick.png">
+        </div>
+        <select id="girdleThicknessSelect">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent (thin/medium/slightly thick)</option>
+            <option value="V.Good">V.Good (smaller then very thin || bigger then thick</option>
+            <option value="Good">Good (smaller then extremly_thin || bigger then very thick</option>
+            <option value="Fair">Fair (- || bigger then very thick</option>
+            <option value="Poor">Poor (- || bigger then extremly thick</option>
+        </select>
+
+
+        <label for="girdleSurface">Girdle Surface:</label>
+        <div class="gallery">
+            <img src="images\gridle_surface\faceted.png">
+            <img src="images\gridle_surface\polished.png">
+            <img src="images\gridle_surface\rough.png">
+        </div>
+        <select id="girdleSurfaceSelect">
+            <option value="None">None</option>
+            <option value="Faceted">Faceted</option>
+            <option value="Polished">Polished</option>
+            <option value="Rough">Rough</option>
+        </select>
+
+        <label for="culetCentered">Symmetry:</label>
+        <div class="gallery">
+            <img src="images\symmetry\off_center_culet.png">
+            <img src="images\symmetry\off_center_tabe.png">
+            <img src="images\symmetry\table_and_gridle_not_paralled.png">
+            <img src="images\symmetry\misshapen_facets.png">
+            <img src="images\symmetry\facets_not_pointing_up.png">
+            <img src="images\symmetry\extra_facets.png">
+            <img src="images\symmetry\crown_and_pavilion_misalignment.png">
+            <img src="images\symmetry\naturals_on_crown_and_pavilion.png">
+            <img src="images\symmetry\wavy_gridle.png">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Off Center Culet
+            </label>
+        </div>
+
+        <div class="form-check ">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Off Center Table
+            </label>
+        </div>
+        <div class="form-check ">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Table & Gridle Not Paralled
+            </label>
+        </div>
+        <div class="form-check ">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Misshapen Facets
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Facets Not Pointing Up
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Extra Facets
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Crown And Pavilion Misalignment
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Naturals On Crown And_Pavilion
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Wavy Gridle
+            </label>
+        </div>
+
+        <label for="culetCentered">Symmetry Grade</label>
+        <select id="finalSymmetryGradeSelection">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent</option>
+            <option value="V.Good">V.Good</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+        </select>
+
+        <label for="culetCentered">Polish:</label>
+        <div class="gallery">
+            <img src="images\polish\polish_lines.png">
+            <img src="images\polish\burn_marks.png">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Polish Lines
+            </label>
+        </div>
+
+        <div class="form-check ">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Burn Marks
+            </label>
+        </div>
+        <label for="culetCentered">Polish Grade</label>
+        <select id="finalPolishGradeSelection">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent</option>
+            <option value="V.Good">V.Good</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+        </select>
+        <hr>
+        <label for="culetCentered">Cut Grade</label>
+        <select id="finalCutGradeSelection">
+            <option value="None">None</option>
+            <option value="Excellent">Excellent</option>
+            <option value="V.Good">V.Good</option>
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="Poor">Poor</option>
+        </select>
+        <hr>
+
+        <label for="culetCentered">Rappaport Price</label>
+        <div style="display: flex; justify-content: space-between;">
+            
+            <div>                          
+                <input type="number" id="rappaportPrice" style="margin-top: 20px;" value="0.0">
+            </div>
+            <div>
+                <input readonly type="number" id="rappaportDiamondPrice" style="margin-top: 20px;" value="0.0">
+            </div>
+            <div>
+
+                <button onclick="CalculatePrice()" class="btn btn-secondary" type="button">Price($)</button>
+                
+                <script>
+                    function CalculatePrice() {                        
+                        var rappaportPrice = parseFloat(document.getElementById('rappaportPrice').value);
+                        var carat_weight = parseFloat(document.getElementById('carat-weight').value);
+
+                        if (rappaportPrice <= 0 || carat_weight <= 0 ) {
+                            // Invalid input, handle the error or show an error message
+                            return;
+                        }
+
+                        var diamondPrice = rappaportPrice * 100 * carat_weight;                        
+                        document.getElementById('rappaportDiamondPrice').value = diamondPrice;
+
+                    }
+
+                </script>
+            </div>
+        </div>
+
+        <hr>
+        <button type="button" id="submit-button" class="btn btn-primary">Get Grading Report</button>
+        <hr>
+        <div style="font-size: 12px;color: #666;">
+            Written with ♥ by J.Z
+        </div>
+    </form>
+</body>
+<script>
+    $(document).ready(function() {
+      $(".gallery img").click(function() {
+        $(this).siblings().removeClass("selected");
+        $(this).addClass("selected");
+      });
+     
+    });
+     // Assuming you have a submit button element with the ID "submit-button"
+     var submitButton = document.getElementById('submit-button');
+        submitButton.addEventListener('click', submitForm);
+
+       
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</html>
