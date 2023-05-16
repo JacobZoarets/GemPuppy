@@ -132,39 +132,39 @@
             margin-top: 0.3rem;
             margin-left: 2.25rem;
         }
+
         .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
-  z-index: 9999; /* Ensure the overlay is on top of other elements */
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+            z-index: 9999; /* Ensure the overlay is on top of other elements */
+        }
 
-.overlay-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 20px;
-  max-width: 600px;
-  width: 90%;
-  max-height: 80%;
-  overflow-y: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
 
-/* Additional styling for report sections */
-.report-section {
-  margin-bottom: 20px;
-}
-
+        /* Additional styling for report sections */
+        .report-section {
+            margin-bottom: 20px;
+        }
     </style>
     <script>
-       
+
 
         function submitForm() {
             // Extracting carat weight from input box
@@ -174,81 +174,117 @@
             var shapeCuttingStyle = document.getElementById('shape-cutting-style').value;
             var colorGradeSelection = document.getElementById('colorGradeSelection').value;
             var clarityGradeSelection = document.getElementById('clarityGradeSelection').value;
-            var fluorescenceSelect = document.getElementById('fluorescenceSelect').value;            
+            var fluorescenceSelect = document.getElementById('fluorescenceSelect').value;
             var finalPolishGradeSelection = document.getElementById('finalPolishGradeSelection').value;
             var finalSymmetryGradeSelection = document.getElementById('finalSymmetryGradeSelection').value;
             var finalCutGradeSelection = document.getElementById('finalCutGradeSelection').value;
 
-            var rappaportDiamondPrice = document.getElementById('rappaportDiamondPrice').value;
-          
+            var depthPercentage = document.getElementById('depthPercentage').value;
+            var table_size = document.getElementById('table_size').value;
+            var pavilion_depth = document.getElementById('pavilion_depth').value;
+            var culetSizeOptionSelect = document.getElementById('culetSizeOptionSelect').value;
+            var crown_angle = document.getElementById('crown_angle').value;
+            var GirdleThicknessOptionSelect = document.getElementById('GirdleThicknessOptionSelect').value;
+
+
+
+
+
+
+
             // Creating the grading report
             var report = `
-                <div class="overlay">
-                <div class="overlay-content">
-                    
-                    <h2 class="report-title">Grading Report</h2>
-                    <div class="report-section">
-                    <h3 class="section-title">`+diamond_id+`</h3>
-                    <p class="section-description">Diamond ID</p>
-                    </div>
-                    <div class="report-section">
-                    <h3 class="section-title">`+caratWeight+`</h3>
-                    <p class="section-description">Carat Weight (CT)</p>
-                    </div>
-                    <div class="report-section">
-                    <h3 class="section-title">`+shapeCuttingStyle+`</h3>
-                    <p class="section-description">Shape & Cutting</p>
-                    </div>
-                    <div class="report-section">
-                    <h3 class="section-title">`+colorGradeSelection+`</h3>
-                    <p class="section-description">Color Grade</p>
-                    </div>
-                    <div class="report-section">
-                    <h3 class="section-title">`+clarityGradeSelection+`</h3>
-                    <p class="section-description">Clarity Grade</p>
-                    </div>
+                                <div class="overlay">
+                                <div class="overlay-content">
 
-                    <div class="report-section">
-                    <h3 class="section-title">`+fluorescenceSelect+`</h3>
-                    <p class="section-description">Fluorescence</p>
-                    </div>
-                    
-                    <div class="report-section">
-                    <h3 class="section-title">`+finalPolishGradeSelection+`</h3>
-                    <p class="section-description">Polish Grade</p>
-                    </div>
+                                    <h2 class="report-title">Grading Report</h2>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ diamond_id + `</h3>
+                                    <p class="section-description">Diamond ID</p>
+                                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ caratWeight + `</h3>
+                                    <p class="section-description">Carat Weight (CT)</p>
+                                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ shapeCuttingStyle + `</h3>
+                                    <p class="section-description">Shape & Cutting</p>
+                                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ colorGradeSelection + `</h3>
+                                    <p class="section-description">Color Grade</p>
+                                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ clarityGradeSelection + `</h3>
+                                    <p class="section-description">Clarity Grade</p>
+                                    </div>
 
-                    <div class="report-section">
-                    <h3 class="section-title">`+finalSymmetryGradeSelection+`</h3>
-                    <p class="section-description">Symmetry Grade</p>
-                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ fluorescenceSelect + `</h3>
+                                    <p class="section-description">Fluorescence</p>
+                                    </div>
 
-                    <div class="report-section">
-                    <h3 class="section-title">`+finalCutGradeSelection+`</h3>
-                    <p class="section-description">Cut Grade</p>
-                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ depthPercentage + `%</h3>
+                                    <p class="section-description">Depth Percentage</p>
+                                    </div>
 
-                    <div class="report-section">
-                    <h3 class="section-title">$`+rappaportDiamondPrice+`</h3>
-                    <p class="section-description">Rappaport Price</p>
-                    </div>
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ table_size + `%</h3>
+                                    <p class="section-description">Table Size</p>
+                                    </div>
+
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ pavilion_depth + `%</h3>
+                                    <p class="section-description">Pavilion Depth</p>
+                                    </div>
+
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ crown_angle + `%</h3>
+                                    <p class="section-description">Crown Angle</p>
+                                    </div>
+
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ culetSizeOptionSelect + `</h3>
+                                    <p class="section-description">Culet Size</p>
+                                    </div>
+
+                                     <div class="report-section">
+                                    <h3 class="section-title">`+ GirdleThicknessOptionSelect + `</h3>
+                                    <p class="section-description">Girdle Thickness</p>
+                                    </div>
+
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ finalSymmetryGradeSelection + `</h3>
+                                    <p class="section-description">Symmetry Grade</p>
+                                    </div>
+
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ finalPolishGradeSelection + `</h3>
+                                    <p class="section-description">Polish Grade</p>
+                                    </div>
 
 
-                    <button class="close-button" onclick="closeOverlay()">Close</button>
-                    <!-- Add more report sections as needed -->
-                </div>
-                </div>
-            `;
+                                    <div class="report-section">
+                                    <h3 class="section-title">`+ finalCutGradeSelection + `</h3>
+                                    <p class="section-description">Cut Grade</p>
+                                    </div>
+
+                                    <button class="close-button" onclick="closeOverlay()">Close</button>
+                                    <!-- Add more report sections as needed -->
+                                </div>
+                                </div>
+                            `;
 
             // Creating the overlay container
             var overlay = document.createElement('div');
             overlay.innerHTML = report;
             document.body.appendChild(overlay);
-                    }
-                    function closeOverlay() {
+        }
+        function closeOverlay() {
             var overlay = document.querySelector('.overlay');
             overlay.remove();
-            }
+        }
     </script>
 </head>
 
@@ -258,20 +294,24 @@
         <br>
         <h2>Diamond Grading Form</h2>
         <div style="height:10px"></div>
-        <label for="Diamond ID">Diamond ID</label>
+        <h5>Diamond ID</h5>
+        <div class="color-desc">Write the diamond's ID or Costumer Name:</div>
         <input type="text" id="diamond-id" value="">
         <hr>
-        <label for="Carat Weight (CT)">Carat Weight (CT)</label>
+        <h5>Carat Weight (CT)</h5>
+        <div class="color-desc">Write the Carat Weight of the diamond:</div>
         <input type="number" step="0.01" id="carat-weight" value="0.0">
         <hr>
 
-        <label for="shape-cutting-style">Shape and Cutting Style</label>
+        <h5>Shape & Cutting Style</h5>
+        <div class="color-desc">Select the Shape & Cutting Style of the diamond:</div>
         <div class="gallery">
 
             <img src="images\shape_and_style\round.png">
             <img src="images\shape_and_style\rectangle.png">
             <img src="images\shape_and_style\princess.png">
         </div>
+
         <select id="shape-cutting-style">
             <option value="None">None</option>
             <option value="Round Brilliant">Round Brilliant</option>
@@ -286,7 +326,8 @@
             <option value="Marquise Shaped">Marquise Shaped</option>
         </select>
         <hr>
-        <label>Color Grading</label>
+        <h5>Color Grading</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
 
             <img src="images\colors\def.png">
@@ -296,6 +337,7 @@
             <img src="images\colors\stuvwxyz.png">
 
         </div>
+        <div class="color-desc">Select the Color Grade for the diamond:</div>
         <select id="colorGradeSelection">
             <option value="None">None</option>
             <option value="D">D: Colorless</option>
@@ -325,9 +367,10 @@
 
         <hr>
 
-        <label>Clarity Grading</label>
-        <div class="gallery">
+        <h5>Clarity Grading</h5>
+        <div class="color-desc">Refference Images:</div>
 
+        <div class="gallery">
             <img src="images\clarity_scale\fl.png">
             <img src="images\clarity_scale\if.png">
             <img src="images\clarity_scale\vvs1.png">
@@ -341,7 +384,7 @@
         </div>
 
 
-
+        <div class="color-desc">Select the Clarity Grade for the diamond:</div>
         <select id="clarityGradeSelection">
             <option value="None">None</option>
             <option value="FL">FL (Flawless)</option>
@@ -356,10 +399,11 @@
             <option value="I2">I2 (Included 2)</option>
             <option value="I3">I3 (Included 3)</option>
         </select>
-
+        <div style="height:15px"></div>
         <div>
 
-            <label for="fluorescence">Fluorescence</label>
+            <h5>Fluorescence</h5>
+            <div class="color-desc">Select the Fluorescence Grade for the diamond:</div>
             <div class="gallery">
 
                 <img src="images\fluresence\none.png">
@@ -378,12 +422,13 @@
 
 
         </div>
-
         <hr>
 
 
 
-        <label>Cut Grading</label>
+
+        <h5>Cut Grading</h5>
+        <div class="color-desc">Write the proportions the diamond and click Calculate:</div>
 
         <div style="display: flex; justify-content: space-between;">
             <div>
@@ -399,10 +444,23 @@
                 <label for="measurements-height">Diamond Height</label>
                 <input type="number" step="0.01" id="measurements-height" value="0.0">
             </div>
-            <div>
 
-                <button onclick="CalculateDepth()" class="btn btn-secondary" type="button">Calculate(%)</button>
-                <input readonly type="number" id="depthPercentage" style="margin-top: 13px;">
+        </div>
+
+
+
+        <div class="gallery">
+            <img src="images\total_depth\too_shallow.png">
+            <img src="images\total_depth\ideal.png">
+            <img src="images\total_depth\too_deep.png">
+        </div>
+
+        <div>
+            <button onclick="CalculateDepth()" class="btn btn-secondary" type="button">Calculate(%)</button>
+            <div>
+                <div style="height:10px"></div>
+                <div class="color-desc">The Calculated Depth Percentage:</div>
+                <input readonly type="number" id="depthPercentage">
                 <script>
                     function CalculateDepth() {
                         var minDiameter = parseFloat(document.getElementById('measurements-min').value);
@@ -421,26 +479,21 @@
 
                 </script>
             </div>
+            <div style="height:10px"></div>
+            <div class="color-desc">Select the Grade closest to The Calculated Depth Percentage:</div>
+            <select name="depthPercentageSelect">
+                <option value="None">None</option>
+                <option value="Excellent">Excellent (between 57.5 - 63)</option>
+                <option value="V.Good">V.Good (smaller then 57.5 || bigger then 63</option>
+                <option value="Good">Good (smaller then 56 || bigger then 64.5</option>
+                <option value="Fair">Fair (smaller then 53 || bigger then 66.5</option>
+                <option value="Poor">Poor (smaller then 51 || bigger then 70.9</option>
+            </select>
         </div>
 
-
-
-        <div class="gallery">
-            <img src="images\total_depth\too_shallow.png">
-            <img src="images\total_depth\ideal.png">
-            <img src="images\total_depth\too_deep.png">
-        </div>
-        <select name="depthPercentageSelect">
-            <option value="None">None</option>
-            <option value="Excellent">Excellent (between 57.5 - 63)</option>
-            <option value="V.Good">V.Good (smaller then 57.5 || bigger then 63</option>
-            <option value="Good">Good (smaller then 56 || bigger then 64.5</option>
-            <option value="Fair">Fair (smaller then 53 || bigger then 66.5</option>
-            <option value="Poor">Poor (smaller then 51 || bigger then 70.9</option>
-        </select>
-
-
-        <label for="tableSize">Table Size(%):</label>
+        <hr />
+        <h5>Table Size(%):</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\table_size\54.png">
             <img src="images\table_size\60.png">
@@ -448,6 +501,9 @@
             <img src="images\table_size\69.png">
             <img src="images\table_size\72.png">
         </div>
+        <div class="color-desc">Check the diamond and Write the table size(%):</div>
+        <input type="number" id="table_size">
+        <div class="color-desc">Select the Grade closest to your table size(%) :</div>
         <select name="tableSizeSelect">
             <option value="None">None</option>
             <option value="Excellent">Excellent (between 52 - 62)</option>
@@ -456,16 +512,20 @@
             <option value="Fair">Fair (smaller then 47 || bigger then 69</option>
             <option value="Poor">Poor (smaller then 44 || bigger then 72</option>
         </select>
+        <hr />
 
 
-
-        <label for="pavilionDepth">Pavilion Depth(%):</label>
+        <h5>Pavilion Depth(%):</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\pavilion_depth\42.png">
             <img src="images\pavilion_depth\43.png">
             <img src="images\pavilion_depth\44.5.png">
             <img src="images\pavilion_depth\48.png">
         </div>
+        <div class="color-desc">Check the diamond and Write the Pavilion Depth(%):</div>
+        <input type="number" id="pavilion_depth">
+        <div class="color-desc">Select the Grade closest to your Pavilion Depth(%):</div>
         <select id="pavilionDepthSelect">
             <option value="None">None</option>
             <option value="Excellent">Excellent (between 42.5 - 44.5)</option>
@@ -474,20 +534,35 @@
             <option value="Fair">Fair (smaller then 38.0 - 39.5 || bigger then 47.0 - 48.0)</option>
             <option value="Poor">Poor (smaller then 38.0 || bigger then 48</option>
         </select>
-
+        <hr />
         <label for="culetSize">Culet Size:</label>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\culet_zise\none.png">
             <img src="images\culet_zise\very_small.png">
             <img src="images\culet_zise\small.png">
             <img src="images\culet_zise\medium.png">
-
             <img src="images\culet_zise\slightly_large.png">
             <img src="images\culet_zise\large.png">
             <img src="images\culet_zise\very_largee.png">
             <img src="images\culet_zise\extremly_large.png">
 
         </div>
+        <div style="height:10px"></div>
+        <div class="color-desc">Check the diamond and Select the culet size:</div>
+        <select id="culetSizeOptionSelect">
+            <option value="None">None</option>
+            <option value="None">None Cheaped</option>
+            <option value="Very Small">Very Small</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Slightly Large">Slightly Large</option>
+            <option value="Large">Large</option>
+            <option value="Very Large">Very Large</option>
+            <option value="Extremly Large">Extremly Large</option>
+        </select>
+        <div style="height:10px"></div>
+        <div class="color-desc">Select the Grade closest to your Culet Zise:</div>
         <select id="culetSizeSelect">
             <option value="None">None</option>
             <option value="Excellent">Excellent (None/V.small/Small)</option>
@@ -497,7 +572,10 @@
             <option value="Poor">Poor (extremly large)</option>
         </select>
 
-        <label for="crownAngle">Crown Angle(degree):</label>
+
+        <hr />
+        <h5>Crown Angle(degree):</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\crown_angle\25.png">
             <img src="images\crown_angle\28.png">
@@ -506,6 +584,9 @@
             <img src="images\crown_angle\37.png">
             <img src="images\crown_angle\40.png">
         </div>
+        <div class="color-desc">Check the diamond and Write the Crown Angle:</div>
+        <input type="number" id="crown_angle">
+        <div class="color-desc">Select the Grade closest to your Crown Angle:</div>
         <select id="crownAngleSelect">
             <option value="None">None</option>
             <option value="Excellent">Excellent (between 31.5 - 36.5)</option>
@@ -514,8 +595,10 @@
             <option value="Fair">Fair (smaller then 22 || bigger then 40</option>
             <option value="Poor">Poor (smaller then 20 || bigger then 41.5</option>
         </select>
+        <hr />
 
-        <label for="girdleThickness">Girdle Thickness:</label>
+        <h5>Girdle Thickness:</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\gridle_thickness\extremly_thin.png">
             <img src="images\gridle_thickness\very_thin.png">
@@ -526,6 +609,20 @@
             <img src="images\gridle_thickness\very_thick.png">
             <img src="images\gridle_thickness\extremly_thick.png">
         </div>
+        <div style="height:10px"></div>
+        <div class="color-desc">Check the diamond and Select the Girdle Thickness:</div>
+        <select id="GirdleThicknessOptionSelect">
+            <option value="None">None</option>
+            <option value="Extremly Thin">Extremly Thin</option>
+            <option value="Thin">Thin</option>
+            <option value="Medium">Medium</option>
+            <option value="Slightly Thick">Slightly Thick</option>
+            <option value="Thick">Thick</option>
+            <option value="Very Thick">Very Thick</option>
+            <option value="Extremly Thick">Extremly Thick</option>
+        </select>
+        <div style="height:10px"></div>
+        <div class="color-desc">Select the Grade closest to your Girdle Thickness:</div>
         <select id="girdleThicknessSelect">
             <option value="None">None</option>
             <option value="Excellent">Excellent (thin/medium/slightly thick)</option>
@@ -535,21 +632,27 @@
             <option value="Poor">Poor (- || bigger then extremly thick</option>
         </select>
 
-
-        <label for="girdleSurface">Girdle Surface:</label>
+        <hr />
+        <h5>Girdle Surface:</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\gridle_surface\faceted.png">
             <img src="images\gridle_surface\polished.png">
             <img src="images\gridle_surface\rough.png">
         </div>
+        <div style="height:10px"></div>
+        <div class="color-desc">Check the diamond and Select the Girdle Surface:</div>
         <select id="girdleSurfaceSelect">
             <option value="None">None</option>
             <option value="Faceted">Faceted</option>
             <option value="Polished">Polished</option>
             <option value="Rough">Rough</option>
         </select>
+        <hr />
 
-        <label for="culetCentered">Symmetry:</label>
+
+        <h5>Symmetry:</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\symmetry\off_center_culet.png">
             <img src="images\symmetry\off_center_tabe.png">
@@ -561,6 +664,9 @@
             <img src="images\symmetry\naturals_on_crown_and_pavilion.png">
             <img src="images\symmetry\wavy_gridle.png">
         </div>
+        <div style="height:10px"></div>
+        <div class="color-desc">Check the boxes if these symmetry problems occur:</div>
+
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
@@ -617,21 +723,29 @@
             </label>
         </div>
 
-        <label for="culetCentered">Symmetry Grade</label>
+        <div style="height:10px"></div>
+        <h5 for="culetCentered">Symmetry Grade</h5>
+        <div class="color-desc">Grade the total symmetry:</div>
         <select id="finalSymmetryGradeSelection">
             <option value="None">None</option>
-            <option value="Excellent">Excellent</option>
-            <option value="V.Good">V.Good</option>
+            <option value="Very Good">Very Good</option>
             <option value="Good">Good</option>
             <option value="Fair">Fair</option>
             <option value="Poor">Poor</option>
         </select>
 
-        <label for="culetCentered">Polish:</label>
+        <hr />
+
+
+        <h5 for="culetCentered">Polish:</h5>
+        <div class="color-desc">Refference Images:</div>
         <div class="gallery">
             <img src="images\polish\polish_lines.png">
             <img src="images\polish\burn_marks.png">
         </div>
+
+        <div style="height:10px"></div>
+        <div class="color-desc">Check the boxes if these polish problems occur:</div>
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
@@ -645,17 +759,20 @@
                 Burn Marks
             </label>
         </div>
-        <label for="culetCentered">Polish Grade</label>
+        <div style="height:10px"></div>
+        <h5>Polish Grade</h5>
+        <div class="color-desc">Grade the total polish:</div>
         <select id="finalPolishGradeSelection">
             <option value="None">None</option>
-            <option value="Excellent">Excellent</option>
-            <option value="V.Good">V.Good</option>
+            <option value="Very Good">Very Good</option>
             <option value="Good">Good</option>
             <option value="Fair">Fair</option>
             <option value="Poor">Poor</option>
         </select>
         <hr>
-        <label for="culetCentered">Cut Grade</label>
+        <div style="height:10px"></div>
+        <h5 for="culetCentered">Cut Grade</h5>
+
         <select id="finalCutGradeSelection">
             <option value="None">None</option>
             <option value="Excellent">Excellent</option>
@@ -666,39 +783,8 @@
         </select>
         <hr>
 
-        <label for="culetCentered">Rappaport Price</label>
-        <div style="display: flex; justify-content: space-between;">
-            
-            <div>                          
-                <input type="number" id="rappaportPrice" style="margin-top: 20px;" value="0.0">
-            </div>
-            <div>
-                <input readonly type="number" id="rappaportDiamondPrice" style="margin-top: 20px;" value="0.0">
-            </div>
-            <div>
 
-                <button onclick="CalculatePrice()" class="btn btn-secondary" type="button">Price($)</button>
-                
-                <script>
-                    function CalculatePrice() {                        
-                        var rappaportPrice = parseFloat(document.getElementById('rappaportPrice').value);
-                        var carat_weight = parseFloat(document.getElementById('carat-weight').value);
-
-                        if (rappaportPrice <= 0 || carat_weight <= 0 ) {
-                            // Invalid input, handle the error or show an error message
-                            return;
-                        }
-
-                        var diamondPrice = rappaportPrice * 100 * carat_weight;                        
-                        document.getElementById('rappaportDiamondPrice').value = diamondPrice;
-
-                    }
-
-                </script>
-            </div>
-        </div>
-
-        <hr>
+        <div class="color-desc">Click to get the report:</div>
         <button type="button" id="submit-button" class="btn btn-primary">Get Grading Report</button>
         <hr>
         <div style="font-size: 12px;color: #666;">
@@ -707,18 +793,18 @@
     </form>
 </body>
 <script>
-    $(document).ready(function() {
-      $(".gallery img").click(function() {
-        $(this).siblings().removeClass("selected");
-        $(this).addClass("selected");
-      });
-     
-    });
-     // Assuming you have a submit button element with the ID "submit-button"
-     var submitButton = document.getElementById('submit-button');
-        submitButton.addEventListener('click', submitForm);
+    $(document).ready(function () {
+        $(".gallery img").click(function () {
+            $(this).siblings().removeClass("selected");
+            $(this).addClass("selected");
+        });
 
-       
+    });
+    // Assuming you have a submit button element with the ID "submit-button"
+    var submitButton = document.getElementById('submit-button');
+    submitButton.addEventListener('click', submitForm);
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
