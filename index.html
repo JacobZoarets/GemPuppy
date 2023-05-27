@@ -4,15 +4,14 @@
 <head>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-04PF8FXYSF"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5B5F5YQZ84"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', 'G-04PF8FXYSF');
+        gtag('config', 'G-5B5F5YQZ84');
     </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puppy Gemologist | Diamond Grading Form</title>
@@ -205,87 +204,87 @@
 
             // Creating the grading report
             var report = `
-                                    <div class="overlay">
-                                    <div class="overlay-content">
+                                        <div class="overlay">
+                                        <div class="overlay-content">
 
-                                        <h2 class="report-title">Grading Report</h2>
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ diamond_id + `</h3>
-                                        <p class="section-description">Diamond ID</p>
-                                        </div>
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ caratWeight + `</h3>
-                                        <p class="section-description">Carat Weight (CT)</p>
-                                        </div>
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ shapeCuttingStyle + `</h3>
-                                        <p class="section-description">Shape & Cutting</p>
-                                        </div>
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ colorGradeSelection + `</h3>
-                                        <p class="section-description">Color Grade</p>
-                                        </div>
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ clarityGradeSelection + `</h3>
-                                        <p class="section-description">Clarity Grade</p>
-                                        </div>
+                                            <h2 class="report-title">Grading Report</h2>
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ diamond_id + `</h3>
+                                            <p class="section-description">Diamond ID</p>
+                                            </div>
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ caratWeight + `</h3>
+                                            <p class="section-description">Carat Weight (CT)</p>
+                                            </div>
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ shapeCuttingStyle + `</h3>
+                                            <p class="section-description">Shape & Cutting</p>
+                                            </div>
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ colorGradeSelection + `</h3>
+                                            <p class="section-description">Color Grade</p>
+                                            </div>
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ clarityGradeSelection + `</h3>
+                                            <p class="section-description">Clarity Grade</p>
+                                            </div>
 
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ fluorescenceSelect + `</h3>
-                                        <p class="section-description">Fluorescence</p>
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ fluorescenceSelect + `</h3>
+                                            <p class="section-description">Fluorescence</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ depthPercentage + `%</h3>
+                                            <p class="section-description">Depth Percentage</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ table_size + `%</h3>
+                                            <p class="section-description">Table Size</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ pavilion_depth + `%</h3>
+                                            <p class="section-description">Pavilion Depth</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ crown_angle + `%</h3>
+                                            <p class="section-description">Crown Angle</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ culetSizeOptionSelect + `</h3>
+                                            <p class="section-description">Culet Size</p>
+                                            </div>
+
+                                             <div class="report-section">
+                                            <h3 class="section-title">`+ GirdleThicknessOptionSelect + `</h3>
+                                            <p class="section-description">Girdle Thickness</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ finalSymmetryGradeSelection + `</h3>
+                                            <p class="section-description">Symmetry Grade</p>
+                                            </div>
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ finalPolishGradeSelection + `</h3>
+                                            <p class="section-description">Polish Grade</p>
+                                            </div>
+
+
+                                            <div class="report-section">
+                                            <h3 class="section-title">`+ finalCutGradeSelection + `</h3>
+                                            <p class="section-description">Cut Grade</p>
+                                            </div>
+
+                                            <button class="close-button" onclick="closeOverlay()">Close</button>
+                                            <!-- Add more report sections as needed -->
                                         </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ depthPercentage + `%</h3>
-                                        <p class="section-description">Depth Percentage</p>
                                         </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ table_size + `%</h3>
-                                        <p class="section-description">Table Size</p>
-                                        </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ pavilion_depth + `%</h3>
-                                        <p class="section-description">Pavilion Depth</p>
-                                        </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ crown_angle + `%</h3>
-                                        <p class="section-description">Crown Angle</p>
-                                        </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ culetSizeOptionSelect + `</h3>
-                                        <p class="section-description">Culet Size</p>
-                                        </div>
-
-                                         <div class="report-section">
-                                        <h3 class="section-title">`+ GirdleThicknessOptionSelect + `</h3>
-                                        <p class="section-description">Girdle Thickness</p>
-                                        </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ finalSymmetryGradeSelection + `</h3>
-                                        <p class="section-description">Symmetry Grade</p>
-                                        </div>
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ finalPolishGradeSelection + `</h3>
-                                        <p class="section-description">Polish Grade</p>
-                                        </div>
-
-
-                                        <div class="report-section">
-                                        <h3 class="section-title">`+ finalCutGradeSelection + `</h3>
-                                        <p class="section-description">Cut Grade</p>
-                                        </div>
-
-                                        <button class="close-button" onclick="closeOverlay()">Close</button>
-                                        <!-- Add more report sections as needed -->
-                                    </div>
-                                    </div>
-                                `;
+                                    `;
 
             // Creating the overlay container
             var overlay = document.createElement('div');
