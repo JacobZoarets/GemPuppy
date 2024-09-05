@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .thank-you-message {
+            font-size: 24px;
+            color: #4CAF50;
+        }
+
+        .details {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="thank-you-message">Thank You for Your Subscription!</h1>
+    <p class="details">We appreciate your business.</p>
+
+    <div id="details-container">
+        <p id="planname"></p>
+        <p id="subscriptionname"></p>
+        <p id="transactionid"></p>
+        <p id="invoicenumber"></p>
+    </div>
+
+    <script>
+        // Function to get query string variables
+        function getQueryStringParams() {
+            const params = new URLSearchParams(window.location.search);
+            const planName = params.get('planname');
+            const subscriptionName = params.get('SubscriptionName');
+            const transactionID = params.get('TransactionID');
+            const invoiceNumber = params.get('InvoiceNumber');
+
+            return { planName, subscriptionName, transactionID, invoiceNumber };
+        }
+
+        // Function to display query string variables on the page
+        function displayDetails() {
+            const { planName, subscriptionName, transactionID, invoiceNumber } = getQueryStringParams();
+
+            if (planName) {
+                document.getElementById('planname').textContent = `Plan Name: ${planName}`;
+            }
+            if (subscriptionName) {
+                document.getElementById('subscriptionname').textContent = `Subscription Name: ${subscriptionName}`;
+            }
+            if (transactionID) {
+                document.getElementById('transactionid').textContent = `Transaction ID: ${transactionID}`;
+            }
+            if (invoiceNumber) {
+                document.getElementById('invoicenumber').textContent = `Invoice Number: ${invoiceNumber}`;
+            }
+        }
+
+        // Call the displayDetails function when the page loads
+        window.onload = displayDetails;
+    </script>
+
+</body>
+</html>
